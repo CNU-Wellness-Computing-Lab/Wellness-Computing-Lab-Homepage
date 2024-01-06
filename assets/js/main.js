@@ -66,16 +66,14 @@ $(document).ready(function() {
 });
 
 
-function makeProfile(imageName, name, engName, researchField, email, selfIntro) {
+function makeProfile(imageName, name, researchField, selfIntro) {
    
     const profile = document.createElement('div');
     const peopleInfo = document.createElement('div');
     const peopleImage = document.createElement('img');
     const peopleResearchInfo = document.createElement('div');
     const researcherName = document.createElement('h2');
-    const englishName = document.createElement('p');
     const researchFieldDiv = document.createElement('p');
-    const researcherEmail = document.createElement('p');
     const selfIntroduction = document.createElement('p');
     
     profile.className = "profile";
@@ -87,34 +85,66 @@ function makeProfile(imageName, name, engName, researchField, email, selfIntro) 
 
     peopleResearchInfo.className = "people-research-info col-md-12";
 
-    researcherName.className = 'research-name';
+    researcherName.className = 'researcher-name';
     researcherName.textContent = name;
-
-    englishName.className = "profile-text";
-    englishName.innerHTML = `<strong>English Name:</strong> ${engName}`;
 
     researchFieldDiv.className = "profile-text";
     researchFieldDiv.innerHTML = `<strong>Research Field:</strong> ${researchField}`;
-
-    researcherEmail.className = "profile-text";
-    researcherEmail.innerHTML = `<strong>Email:</strong> ${email}`;
 
     selfIntroduction.id = "self-introduction";
     selfIntroduction.className = "profile-text";
     selfIntroduction.innerHTML = `<strong class='profile-text'>Self-Introduction:</strong><br>${selfIntro}`;
 
     peopleResearchInfo.appendChild(researcherName);
-    peopleResearchInfo.appendChild(englishName);
     peopleResearchInfo.appendChild(researchFieldDiv);
-    peopleResearchInfo.appendChild(researcherEmail);
     peopleResearchInfo.appendChild(selfIntroduction);
 
     peopleInfo.appendChild(peopleImage);
     peopleInfo.appendChild(peopleResearchInfo);
+    peopleInfo.appendChild(makeLinked("ff", "ff", "a"));
 
     profile.appendChild(peopleInfo);
-    
     return profile;
+}
+
+function makeLinked(emailAddr, githubAddr, linkedInAddr) {
+    const wrapper = document.createElement('div');
+    const emailIcon = document.createElement('img');
+    const githubIcon = document.createElement('img');
+    const linkedInIcon = document.createElement('img');
+    const githubA = document.createElement('a');
+    const linkedInA = document.createElement('a');
+
+    emailIcon.src = `assets/images/mail.png`;
+    emailIcon.alt = "Email";
+    emailIcon.className = "linked-image";
+    githubIcon.src = `assets/images/github-2.png`;
+    githubIcon.alt = "Github";
+    githubIcon.className = "linked-image";
+    linkedInIcon.src = `assets/images/linkedIn-2.png`;
+    linkedInIcon.alt = "LinkedIn";
+    linkedInIcon.className = "linked-image";
+
+    emailIcon.addEventListener('click', () => {
+        navigator.clipboard.writeText(emailAddr)
+    .then(() => {alert('이메일이 복사되었습니다: ' + emailAddr);})
+    .catch(err => {console.error('복사 실패')});
+    });
+
+    githubA.href = githubAddr;
+    githubA.target = '_blank';
+    linkedInA.href = linkedInAddr;
+    linkedInA.target = '_blank';
+
+    githubA.appendChild(githubIcon);
+    linkedInA.appendChild(linkedInIcon);
+
+    wrapper.className = "linked-wrapper";
+    wrapper.appendChild(emailIcon);
+    wrapper.appendChild(githubA);
+    wrapper.appendChild(linkedInA);
+
+    return wrapper;
 }
 
 function makeClean() {
@@ -122,7 +152,7 @@ function makeClean() {
 }
 
 function facultyGen() {
-    $(".lab-content").append(makeProfile('jaejeongKim', '김재정', 'Jaejeong Kim', 'researchField', 'email', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Jaejeong Kim', 'digital healthcare, Interactive computing', 'self-introduction'));
 }
 
 function phdGen() {
@@ -130,19 +160,18 @@ function phdGen() {
 }
 
 function msGen() {
-    $(".lab-content").append(makeProfile('jaejeongKim', '강유주', 'Yuju Kang', 'researchField', 'email', 'self-introduction'));
-    $(".lab-content").append(makeProfile('jaejeongKim', '정계영', 'Geyeong Jung', 'researchField', 'email', 'self-introduction'));
-    $(".lab-content").append(makeProfile('jaejeongKim', '이재용', 'Jaeyong Lee', 'researchField', 'email', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Yuju Kang', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Geyeong Jung', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Jaeyong Lee', 'researchField', 'self-introduction'));
 }
 
 function bsGen() {
-    $(".lab-content").append(makeProfile('jaejeongKim', '김성수', 'Seongsoo Kim', 'researchField', 'email', 'self-introduction'));
-    $(".lab-content").append(makeProfile('jaejeongKim', '장영', 'Yeong Chang', 'researchField', 'email', 'self-introduction'));
-    $(".lab-content").append(makeProfile('jaejeongKim', '이준구', 'Jungu Lee', 'researchField', 'email', 'self-introduction'));
-    $(".lab-content").append(makeProfile('jaejeongKim', '노채은', 'Chaeun No', 'researchField', 'email', 'self-introduction'));
-    $(".lab-content").append(makeProfile('jaejeongKim', '앤서니', 'Anthony', 'researchField', 'email', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Seongsoo Kim', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Yeong Chang', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Jungu Lee', 'researchField', 'self-introduction'));
 }
 
 function alumniGen() {
-    $(".lab-content").append(makeProfile('jaejeongKim', '복신영', 'Sinyeong Bok', 'researchField', 'email', 'self-introduction'));    
+    $(".profile-container").append(makeProfile('jaejeongKim', 'Sinyeong Bok', 'researchField', 'self-introduction'));    
 }
+
