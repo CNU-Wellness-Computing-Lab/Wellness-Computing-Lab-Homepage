@@ -79,7 +79,7 @@ function makeProfile(imageName, name, researchField, selfIntro) {
     profile.className = "profile";
     peopleInfo.className = "people-info";
 
-    peopleImage.src = `assets/images/${imageName}.jpg`;
+    peopleImage.src = `assets/images/Members/${imageName}.jpg`;
     peopleImage.alt = "Researcher's Photo";
     peopleImage.className = 'people-image col-xs-12 col-sm-12';
 
@@ -115,13 +115,13 @@ function makeLinked(emailAddr, githubAddr, linkedInAddr) {
     const githubA = document.createElement('a');
     const linkedInA = document.createElement('a');
 
-    emailIcon.src = `assets/images/mail.png`;
+    emailIcon.src = `assets/images/Members/mail.png`;
     emailIcon.alt = "Email";
     emailIcon.className = "linked-image";
-    githubIcon.src = `assets/images/github-2.png`;
+    githubIcon.src = `assets/images/Members/github.png`;
     githubIcon.alt = "Github";
     githubIcon.className = "linked-image";
-    linkedInIcon.src = `assets/images/linkedIn-2.png`;
+    linkedInIcon.src = `assets/images/Members/linkedIn.png`;
     linkedInIcon.alt = "LinkedIn";
     linkedInIcon.className = "linked-image";
 
@@ -160,18 +160,18 @@ function phdGen() {
 }
 
 function msGen() {
-    $(".profile-container").append(makeProfile('jaejeongKim', 'Yuju Kang', 'researchField', 'self-introduction'));
-    $(".profile-container").append(makeProfile('jaejeongKim', 'Geyeong Jung', 'researchField', 'self-introduction'));
-    $(".profile-container").append(makeProfile('jaejeongKim', 'Jaeyong Lee', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('yujuKang', 'Yuju Kang', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('GyeyoungJung', 'Geyeong Jung', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('JaeyongLee', 'Jaeyong Lee', 'researchField', 'self-introduction'));
 }
 
 function bsGen() {
-    $(".profile-container").append(makeProfile('jaejeongKim', 'Seongsoo Kim', 'researchField', 'self-introduction'));
+    $(".profile-container").append(makeProfile('seongsooKim', 'Seongsoo Kim', 'researchField', 'self-introduction'));
     $(".profile-container").append(makeProfile('jaejeongKim', 'Yeong Chang', 'researchField', 'self-introduction'));
     $(".profile-container").append(makeProfile('jaejeongKim', 'Jungu Lee', 'researchField', 'self-introduction'));
 }
 
 function alumniGen() {
-    $(".profile-container").append(makeProfile('jaejeongKim', 'Sinyeong Bok', 'researchField', 'self-introduction'));    
+    $(".profile-container").append(makeProfile('sinyoungBok', 'Sinyeong Bok', 'researchField', 'self-introduction'));    
 }
 
