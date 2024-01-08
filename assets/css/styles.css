@@ -1114,17 +1114,32 @@ a.btn-cta {
     min-height: inherit;
   }
 
-  .profile {
+  .content-container {
     width: 54vw;
     padding: 20px, 0;
     margin-bottom: 120px;
   }
-  .profile .people-image {
+  .content-container .content-image {
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-left: 1vw;
+    width: 100px;
+    height: 100px;
   }
 
-  .profile .people-info {
+  .content-container .info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.1);
+    padding: 1vw;
+    position: relative;
+    /* filter:box-shadow(0px 2px 5px rgba(0,0,0,0.10000000149011612)); */
+}
+
+  .content-container .people-info {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1139,43 +1154,47 @@ a.btn-cta {
     cursor: pointer;
   } */
 
-  .profile .researcher-name {
-    margin-bottom: 5vh;
-    font-size: 34px;
+  .content-container .researcher-name {
+    margin-bottom: 2.5vh;
+    font-size: 22px;
     font-weight: 600;
   }
-  .profile .people-research-info {
+  .content-container .people-research-info {
     margin: 0 5.5vh 0 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .profile .profile-text {
-      font-size: 18px;
+  .content-container .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .content-container .profile-text {
+      font-size: 14px;
       text-align: left;
-      margin: 1.3vh 0 1.3vh;
+      margin: 1.3vh 3vw 1.3vh;
       /* color: rgba(148, 170, 157, 0.71); */
       color: rgba(6,6,6, 0.55);
   }
 
-  .profile #self-introduction {
-      font-size: 14px;
+  .content-container #self-introduction {
+      font-size: 12px;
       text-align: left;
+      margin-top: 0px;
+      margin-bottom: 60px;
       color: rgba(6,6,6, 0.55);
   }
 
-  .profile .paper-style {
+  .content-container .paper-style {
       margin-left: 4.5vw;
       font-size: 16px;
   }
 
-  .profile .contact-info {
+  .content-container .contact-info {
       margin-top: 5vh;
-  }
-
-  .people-image {
-    margin-left: 1.4vw;
-    width: 200px;
-    height: 200px;
-    
   }
 
   .text-interval-80 {
@@ -1188,7 +1207,7 @@ a.btn-cta {
 
   #lab-members {
       text-align: center;
-      font-size: 36px;
+      font-size: 24px;
       background-color: azure;
       color: #40babd; 
       font-weight: bold;
@@ -1212,7 +1231,7 @@ a.btn-cta {
   }
 
   .showBox {
-    width: 50%;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -1231,7 +1250,7 @@ a.btn-cta {
     /* color: rgba(64, 186, 189, 0.4); */
     color: black;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
   }
 
@@ -1244,7 +1263,7 @@ a.btn-cta {
     /* color: rgba(64, 186, 189, 1); */
     color: rgba(64, 186, 189, 0.6);
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
   }
 
@@ -1271,6 +1290,26 @@ a.btn-cta {
     align-items: center;
   }
 
+  .linked-wrapper {
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  
+  .linked-image {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .linked-image:hover {
+    cursor: pointer;
+  }
+  
+
   .papers {
   
     /* border: 1px solid #ddd; */
@@ -1281,11 +1320,6 @@ a.btn-cta {
     flex-direction: column;
     justify-content: space-between;
 
-  }
-
-  .important-text {
-    font-size: 32px;
-    font-weight: 700;
   }
 
   .papar-des {
@@ -1304,6 +1338,95 @@ a.btn-cta {
     flex-direction: column;
     align-items: center;
   }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .page-container:hover {
+    cursor: pointer;
+  }
+
+  .page-container .content-container {
+    width: 67vw;
+  }
+
+  .page-container .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .important-text {
+    width: 250px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  
+  #abstract {
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-left: 6.5vw;
+    color: rgba(6,6,6, 0.55);
+  }
+  
+  .description-text {
+    font-size: 22px;
+    text-align: center;
+    margin-left: 6.5vw;
+    /* margin: 1.3vh 0 1.3vh; */
+    /* color: rgba(148, 170, 157, 0.71); */
+    color: rgba(6,6,6, 0.7);
+  }
+  
+  #paper-reference {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .paper-ref {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .publicatedDate {
+    margin-left: 50px;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 800;
+    color: black;
+  }
+  
+  #subjects-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+  
+  #contact-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  #contact-container .content-container {
+    width: 80vw;
+  }
+
+  #contact-container .important-text {
+    font-size: 18px;
+  }
+
+  #contact-container .description-text {
+    font-size: 14px;
+  }
+
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -1337,18 +1460,21 @@ a.btn-cta {
     margin-top: 30px;
   }
 
-  .profile {
+  .content-container {
     width: 54vw;
     padding: 20px, 0;
     margin-bottom: 120px;
   }
 
-  .profile .people-image {
+  .content-container .content-image {
     border-radius: 50%;
     margin-bottom: 10px;
+    margin-left: 1.4vw;
+    width: 200px;
+    height: 200px;
   }
 
-  .profile .people-info {
+  .content-container .people-info {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1363,13 +1489,13 @@ a.btn-cta {
     cursor: pointer;
   } */
 
-  .profile .researcher-name {
+  .content-container .researcher-name {
     margin-bottom: 5vh;
     font-size: 34px;
     font-weight: 600;
   }
 
-  .profile .profile-text {
+  .content-container .profile-text {
     font-size: 18px;
     text-align: left;
     margin: 1.3vh 0 1.3vh;
@@ -1377,18 +1503,18 @@ a.btn-cta {
     color: rgba(6,6,6, 0.55);
 }
 
-  .profile #self-introduction {
+  .content-container #self-introduction {
       font-size: 14px;
       text-align: left;
       color: rgba(6,6,6, 0.55);
   }
 
-  .profile .paper-style {
+  .content-container .paper-style {
       margin-left: 4.5vw;
       font-size: 16px;
   }
 
-  .profile .contact-info {
+  .content-container .contact-info {
       margin-top: 5vh;
   }
 

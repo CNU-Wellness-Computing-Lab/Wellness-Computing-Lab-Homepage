@@ -75,29 +75,34 @@ function makeProfile(imageName, name, researchField, selfIntro) {
     const researcherName = document.createElement('h2');
     const researchFieldDiv = document.createElement('p');
     const selfIntroduction = document.createElement('p');
+    const textContainer = document.createElement('div');
     
     profile.className = "content-container";
     peopleInfo.className = "info-container";
 
     peopleImage.src = `assets/images/Members/${imageName}.jpg`;
     peopleImage.alt = "Researcher's Photo";
-    peopleImage.className = 'content-image col-xs-12 col-sm-12';
+    peopleImage.className = 'content-image col-xs-12 row-xs-12';
 
-    peopleResearchInfo.className = "people-research-info col-md-12";
+    peopleResearchInfo.className = "people-research-info col-xs-12 row-xs-12";
 
     researcherName.className = 'researcher-name';
     researcherName.textContent = name;
+
+    textContainer.className = "text-container";
 
     researchFieldDiv.className = "profile-text";
     researchFieldDiv.innerHTML = `<strong>Research Field:</strong> ${researchField}`;
 
     selfIntroduction.id = "self-introduction";
     selfIntroduction.className = "profile-text";
-    selfIntroduction.innerHTML = `<strong class='profile-text'>Self-Introduction:</strong><br>${selfIntro}`;
+    selfIntroduction.innerHTML = `<strong class='profile-text'><br>Self-Introduction:</strong><br>${selfIntro}`;
+
+    textContainer.appendChild(researchFieldDiv);
+    textContainer.appendChild(selfIntroduction);
 
     peopleResearchInfo.appendChild(researcherName);
-    peopleResearchInfo.appendChild(researchFieldDiv);
-    peopleResearchInfo.appendChild(selfIntroduction);
+    peopleResearchInfo.appendChild(textContainer);
 
     peopleInfo.appendChild(peopleImage);
     peopleInfo.appendChild(peopleResearchInfo);
