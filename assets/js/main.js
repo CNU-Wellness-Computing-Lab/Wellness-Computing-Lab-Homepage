@@ -76,12 +76,12 @@ function makeProfile(imageName, name, researchField, selfIntro) {
     const researchFieldDiv = document.createElement('p');
     const selfIntroduction = document.createElement('p');
     
-    profile.className = "profile";
-    peopleInfo.className = "people-info";
+    profile.className = "content-container";
+    peopleInfo.className = "info-container";
 
     peopleImage.src = `assets/images/Members/${imageName}.jpg`;
     peopleImage.alt = "Researcher's Photo";
-    peopleImage.className = 'people-image col-xs-12 col-sm-12';
+    peopleImage.className = 'content-image col-xs-12 col-sm-12';
 
     peopleResearchInfo.className = "people-research-info col-md-12";
 
@@ -148,7 +148,7 @@ function makeLinked(emailAddr, githubAddr, linkedInAddr) {
 }
 
 function makeClean() {
-    $('.profile').remove();
+    $('.content-container').remove();
 }
 
 function facultyGen() {
