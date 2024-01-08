@@ -441,6 +441,7 @@ a.btn-cta {
   width: 54vw;
   padding: 20px, 0;
   margin-bottom: 120px;
+  position: relative;
   /* justify-content: space-between; */
 }
 .profile .people-image {
@@ -617,32 +618,53 @@ a.btn-cta {
   cursor: pointer;
 }
 
-.papers {
- 
+.paper {
   /* border: 1px solid #ddd; */
-  height: 55vh;
-  padding: 20px;
-  margin-bottom: 20px;
+  width: 54vw;
+  padding: 20px, 0;
+  margin-bottom: 120px;
+  /* justify-content: space-between; */
+}
+
+.paper-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+}
 
+.paper-container:hover {
+  cursor: pointer;
 }
 
 .important-text {
   font-size: 32px;
   font-weight: 700;
+  margin-bottom: 30px;
 }
 
-.papar-des {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
+#abstract {
+  font-size: 18px;
+  text-align: left;
+  color: rgba(6,6,6, 0.55);
 }
 
-.paper-des-icon {
-  width: 40px;
-  height: 40px;
+.paper-text {
+  font-size: 18px;
+  text-align: left;
+  /* margin: 1.3vh 0 1.3vh; */
+  /* color: rgba(148, 170, 157, 0.71); */
+  color: rgba(6,6,6, 0.7);
+}
+
+#paper-reference {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.paper-ref {
+  width: 35px;
+  height: 35px;
 }
 
 /* ======= Testimonials Section ======= */
