@@ -54,6 +54,9 @@ $(document).ready(function() {
             case 'jungu':
                 copyEmail('wnsrn4970@naver.com');
                 break;
+            case 'soyeon':
+                copyEmail('jetblue2332@gmail.com');
+                break;
             case 'sinyoung':
                 copyEmail('sinyoungbok99@gmail.com');
                 break;
