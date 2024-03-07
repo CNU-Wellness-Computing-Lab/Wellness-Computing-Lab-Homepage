@@ -3,7 +3,10 @@ $(document).ready(function() {
     
     /* ======= Fixed header when scrolled ======= */
     
-    $(window).bind('scroll', function() {
+
+    
+    $(window).on('scroll', function() {
+        console.log('moved');
          if ($(window).scrollTop() > 0) {
              $('#header').addClass('header-scrolled');
          }
@@ -11,6 +14,7 @@ $(document).ready(function() {
              $('#header').removeClass('header-scrolled');
          }
     });
+
     
     /* ======= Scrollspy ======= */
     $('body').scrollspy({ target: '#header', offset: 100});
@@ -71,4 +75,3 @@ $(document).ready(function() {
         .catch(err => {console.error('복사 실패')});
     }
 });
-

@@ -7,9 +7,6 @@
 * License: Creative Commons Attribution 3.0 License
 */
 /* Theme default */
-html {
-  width: 100%;
-}
 body {
   font-family: 'Noto Sans', sans-serif;
   color: #494d55;
@@ -18,7 +15,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  width: 100vw;
+  /* width: 100vw; */
   overflow-x: hidden;
 }
 p {
@@ -336,6 +333,7 @@ a.btn-cta {
 /* ======= About Section ======= */
 .about-section {
   padding-top: 90px;
+  overflow-y: scroll;
 }
 .about-section {
   margin: 0;

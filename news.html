@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<html lang="en">  
 <head>
-    <title>Responsive website template for developers</title>
+    <title>Wellness computing news</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +33,7 @@
     <header id="header" class="header">  
         <div class="container">       
             <h1 class="logo">
-                <a class="scrollto" href="index.html">
+                <a href="index.html">
                     <span class="logo-icon-wrapper"><img class="logo-icon" src="assets/images/logo-icon.svg" alt="icon"></span>
                     <span class="head-text"><span class="highlight">Wellness</span> Computing</span></a>
             </h1><!--//logo-->
@@ -50,7 +48,7 @@
                 </div><!--//navbar-header-->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active nav-item"><a class="scrollto" href="#about">About</a></li>
+                        <li class="active nav-item"><a href="index.html">About</a></li>
                         <li class="nav-item"><a href="members.html">Members</a></li>
                         <li class="nav-item"><a href="publications.html">Publications</a></li>                        
                         <li class="nav-item"><a href="projects.html">Projects</a></li>
@@ -61,80 +59,18 @@
         </div><!--//container-->
     </header><!--//header-->
     
-    <div id="hero" class="hero-section">
-        
-        <div id="hero-carousel" class="hero-carousel carousel carousel-fade slide" data-ride="carousel" data-interval="10000">
-            
-            <!--<div class="figure-holder-wrapper">
-        		<div class="container">
-            		<div class="row">
-                		<div class="figure-holder">
-                	        <!-- <img class="figure-image img-responsive" src="assets/images/imac.png" alt="image" /> -->
-                       <!-- </div><!--//figure-holder-->
-            		<!--</div><!--//row-->
-        		<!--</div><!--//container-->
-    		<!--</div> figure-holder-wrapper -->
-            
-			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li class="active" data-slide-to="0" data-target="#hero-carousel"></li>
-				<li data-slide-to="1" data-target="#hero-carousel"></li>
-				<li data-slide-to="2" data-target="#hero-carousel"></li>
-			</ol>
-			
-			<div class="carousel-inner">
-    			
-				<div class="item item-1 active">
-					<div class="item-content container">
-    					<div class="item-content-inner">
-    				        
-				            <h2 class="heading">Chungnam National University<br class="hidden-xs">Wellness Computing Lab.</h2>
-				            <p class="intro">Our core mission is to contribute to the betterment of well-being through HCI research!</p>
-    				        
-    					</div><!--//item-content-inner-->
-					</div><!--//item-content-->
-				</div><!--//item-->
-				
-				<div class="item item-2">
-					<div class="item-content container">
-						<div class="item-content-inner">
-    				        
-				            <h2 class="heading">Human-Computer Interaction</h2>
-				            <p class="intro">Centered around Human-Computer Interaction (HCI), our research explores the realms of UI/UX, persuasive computing.</p>
-    				        
-    					</div><!--//item-content-inner-->
-					</div>
-				</div><!--//item-->
-				
-				<div class="item item-3">
-					<div class="item-content container">
-						<div class="item-content-inner">
-    				        
-				            <h2 class="heading">Digital Healthcare research</h2>
-				            <p class="intro">With a focus on digital healthcare, we contribute to the advancement of human health and happiness.</p>
-    				        
-    					</div><!--//item-content-inner-->
-					</div>
-				</div>
-			</div><!--//carousel-inner-->
 
-		</div><!--//carousel-->
-    </div><!--//hero-->
-
-    <div id="about" class="about-section">
+    <div class="about-section">
         <div class="container text-center">
             <div class="introduction-about-lab">
-                <div class="recent-news">
+                <div id="lab-members" style="width: 100%;">
                     Recent News
-                </div> 
+                </div>
 
-                <div style="height: 25px;"></div>
+                <div style="height: 100px;"></div>
 
                 <div class="news-container">
                     <div class="news-box">
-                        <!-- <div class="news-image-container">
-                            <img src="assets/images/hci2024.PNG" alt="hci2024" class="news-image">
-                        </div> -->
                         <div></div>
                         <div class="news-contents">
                             <p class="news-date">24 Jan 2024</p>
@@ -282,9 +218,13 @@
                     </div>
                 </div>
 
-                <div style="height: 40px;"></div>
+                <div style="height: 100px;"></div>
             </div>
         </div>
     </div>
-
+    
+    <script type="text/javascript" src="assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>     
+    <script type="text/javascript" src="assets/js/main.js"></script> 
 </body>
