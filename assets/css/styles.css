@@ -125,6 +125,7 @@ a.btn-cta {
   -moz-transition: none;
   -ms-transition: none;
   -o-transition: none;
+  background: #fff;
 }
 .header.header-scrolled {
   background: #fff;
@@ -267,7 +268,7 @@ a.btn-cta {
 }
 /* ======= Hero Section ======= */
 .hero-section {
-  min-height: 560px;
+  min-height: 400px; 
   background: #494d55;
   position: relative;
 }
@@ -280,7 +281,7 @@ a.btn-cta {
 }
 .hero-section .figure-holder {
   position: relative;
-  height: 560px;
+  height: 400px; 
 }
 .hero-section .figure-holder .figure-image {
   position: absolute;
@@ -289,11 +290,11 @@ a.btn-cta {
   z-index: 10;
 }
 .hero-carousel {
-  height: 560px;
+  height: 400px; 
   color: #fff;
 }
 .hero-carousel .carousel-inner .item {
-  height: 560px;
+  height: 400px;
   background-position: center center;
 }
 .hero-carousel .carousel-inner .item-1 {
@@ -1318,13 +1319,13 @@ a.btn-cta {
     margin-bottom: 0;
   }
   .hero-carousel {
-    height: 660px;
+    height: 400px;
   }
   .hero-section .carousel-inner {
-    height: 660px;
+    height: 400px;
   }
   .hero-carousel .carousel-inner .item {
-    height: 660px;
+    height: 400px;
   }
   .testimonials-section .item .profile-image {
     width: 60px;
