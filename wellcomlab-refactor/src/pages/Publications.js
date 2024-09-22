@@ -1,16 +1,17 @@
-// Publications.js
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../components/Firebase'; // Firebase 설정 파일
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { db } from '../components/Firebase';
 import MenuBarHorizontal from '../components/MenuBarHorizontal';
-import PublicationList from '../components/PublicationList'; // 분리한 컴포넌트 임포트
+import PublicationList from '../components/PublicationList';
 import { colors } from '../assets/ui/styles';
+import PublicationModal from '../components/PublicationModal';
+import AddCloudIcon from '../assets/icons/icon_cloud_upload.png';
 
-// 컨테이너 스타일
 const Container = styled.div`
-  width: 100vw;
-  padding: 30px 20px;
+  width: 100%;
+  height: auto;
+  padding: 80px 20px 30px;
   box-sizing: border-box;
   max-width: 1200px;
   display: flex;
@@ -20,72 +21,157 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
+const Background = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.backgroundColor};
+`;
+
 const YearHeader = styled.h1`
   width: 100%;
   max-width: 1000px;
   margin: 20px 0;
-  padding-left: 10px;
+  padding-left: 20px;
+  box-sizing: border-box;
   font-weight: 900;
   font-size: 48px;
-  //font-style: italic;
-  color: ${colors.cyan};
+  color: ${colors.mainColor};
   font-family: "Bebas Neue";
 `;
 
-function Publications() {
+const AddButton = styled.button`
+  padding: 10px 20px;
+  background-color: ${colors.mainColor};
+  color: ${({ theme }) => theme.buttonColor};
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+
+  &:hover {
+    background-color: ${colors.gray500};
+    color: ${({ theme }) => theme.buttonColor};
+  }
+`;
+
+const AddIcon = styled.img`
+  height: 24px;
+`;
+
+function Publications({ isLoggedIn }) {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [allPublications, setAllPublications] = useState([]);
   const [publications, setPublications] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPublication, setSelectedPublication] = useState(null);
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
+    filterPublications(category);
+  };
+
+  const handleAddPublication = () => {
+    setSelectedPublication(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditPublication = (publication) => {
+    setSelectedPublication(publication);
+    setIsModalOpen(true);
+  };
+
+  const handleDeletePublication = async (publicationId) => {
+    try {
+      await deleteDoc(doc(db, 'publications', publicationId));
+      fetchPublications();
+      alert('Publication가 삭제되었습니다');
+    } catch (error) {
+      console.error("Error deleting publication: ", error);
+      alert('Failed to delete publication.');
+    }
+  };
+
+  const handleSavePublication = () => {
+    fetchPublications();
+    setIsModalOpen(false);
+    setSelectedPublication(null);
+    alert('Publication 업로드 완!');
+  };
+
+  const fetchPublications = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'publications'));
+      const publicationsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setAllPublications(publicationsData);
+      filterPublications(activeCategory, publicationsData);
+    } catch (error) {
+      console.error("Error fetching publications: ", error);
+    }
+  };
+
+  const filterPublications = (category, publicationsData = allPublications) => {
+    const filteredPublications = category === 'All'
+      ? publicationsData
+      : publicationsData.filter(pub => pub.category === category);
+
+    const groupedByYear = filteredPublications.reduce((acc, publication) => {
+      const year = publication.year;
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(publication);
+      return acc;
+    }, {});
+
+    setPublications(groupedByYear);
   };
 
   useEffect(() => {
-    const fetchPublications = async () => {
-      let q;
-      if (activeCategory === 'All') {
-        q = query(collection(db, 'publications'));
-      } else {
-        q = query(collection(db, 'publications'), where('category', '==', activeCategory));
-      }
-
-      try {
-        const querySnapshot = await getDocs(q);
-        const publicationsData = querySnapshot.docs.map(doc => doc.data());
-
-        // 연도별로 데이터 그룹화
-        const groupedByYear = publicationsData.reduce((acc, publication) => {
-          const year = publication.year;
-          if (!acc[year]) acc[year] = [];
-          acc[year].push(publication);
-          return acc;
-        }, {});
-
-        console.log("Grouped Publications: ", groupedByYear); // 콘솔 로그 추가
-        setPublications(groupedByYear);
-      } catch (error) {
-        console.error("Error fetching publications: ", error);
-      }
-    };
-
     fetchPublications();
-  }, [activeCategory]);
+  }, []);
 
   return (
-    <Container>
-      <MenuBarHorizontal
-        items={['All', 'Conference', 'Journal', 'Poster', 'Other']}
-        activeItem={activeCategory}
-        onItemClick={handleCategoryChange}
-      />
+    <Background>
+      <Container>
+        {/* <MenuBarHorizontal
+          items={['All', 'Conference', 'Journal', 'Poster', 'Other']}
+          activeItem={activeCategory}
+          onItemClick={handleCategoryChange}
+        /> */}
 
-      {Object.keys(publications).sort((a, b) => b - a).map((year) => (
-        <div key={year}>
-          <YearHeader>{year}</YearHeader>
-          <PublicationList publications={publications[year]} />
-        </div>
-      ))}
-    </Container>
+        {isLoggedIn && (
+          <AddButton onClick={handleAddPublication}>
+            <AddIcon src={AddCloudIcon} alt="add icon" />
+            Add Publication
+          </AddButton>
+        )}
+
+        {Object.keys(publications).sort((a, b) => b - a).map((year) => (
+          <div key={year}>
+            <YearHeader>{year}</YearHeader>
+            <PublicationList
+              publications={publications[year]}
+              onEdit={handleEditPublication}
+              onDelete={handleDeletePublication}
+              isLoggedIn={isLoggedIn}
+            />
+          </div>
+        ))}
+
+        {isModalOpen && (
+          <PublicationModal
+            publication={selectedPublication}
+            onSave={handleSavePublication}
+            onClose={() => setIsModalOpen(false)}
+          />
+        )}
+      </Container>
+    </Background>
   );
 }
 

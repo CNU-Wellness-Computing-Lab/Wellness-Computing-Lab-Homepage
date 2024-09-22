@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DarkModeContext } from '../context/DarkModeContext';
 import styled from 'styled-components';
-import { colors, fonts, fontSize, media } from '../assets/ui/styles';  
-import LandingSlider from '../components/LandingSlider';
+import IntroducePage from '../components/IntroducePage';
+import NewsPage from '../components/News';
 
-const Subtitle = styled.h4`
-  color: ${colors.black};
+
+const PageContainer = styled.div`
   width: 100%;
-  max-width: 800px;
-  text-align: left;  
-  margin: 0;
-  margin-top: 26px;
-  margin-bottom: 4px;
+  height: 100vh;
+  scroll-snap-type: y mandatory; 
+  overflow-y: scroll; 
+  scroll-behavior: smooth;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  
+  &::-webkit-scrollbar {
+    display: none; 
+  }
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 `;
 
-function Home() {
+const PageSection = styled.div`
+  width: 100%;
+  height: 100vh; /* 각 섹션이 화면 전체를 차지하도록 설정 */
+  scroll-snap-align: start; /* 섹션의 시작 위치에 스냅 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+function Home({ isLoggedIn }) {
+  // const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div>
-      <LandingSlider />
-      <Subtitle>Welcome to the Home Page</Subtitle>
-      <p>This is the Home page of our React application.</p>
-    </div>
+    <PageContainer>
+      <PageSection>
+        <IntroducePage />
+      </PageSection>
+      <PageSection>
+        <NewsPage isLoggedIn={isLoggedIn}/>
+      </PageSection>
+    </PageContainer>
   );
 }
 

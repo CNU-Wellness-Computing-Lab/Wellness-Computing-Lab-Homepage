@@ -2,11 +2,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import rgba from 'hex-to-rgba';
-import { colors } from '../assets/ui/styles';
-import poster from '../assets/icons/icon_poster_cyan.png'; // 아이콘 이미지 경로를 수정하세요
-import journal from '../assets/icons/icon_journal_cyan.png'; // 아이콘 이미지 경로를 수정하세요
-import other from '../assets/icons/icon_other_cyan.png'; // 아이콘 이미지 경로를 수정하세요
-import conference from '../assets/icons/icon_conference_cyan.png'; // 아이콘 이미지 경로를 수정하세요
+import { colors, media } from '../assets/ui/styles';
+import poster from '../assets/icons/icon_receipt_long.png';
+import journal from '../assets/icons/icon_receipt_long.png'; 
+import other from '../assets/icons/icon_receipt_long.png'; 
+import conference from '../assets/icons/icon_receipt_long.png'; 
 
 const CategoryAssets = {
   CONFERENCE: conference,
@@ -16,8 +16,8 @@ const CategoryAssets = {
 };
 
 const CategoryItem = styled.div`
-  background-color: ${rgba(colors.cyan, 0.3)};
-  color: ${colors.cyan};
+  background-color: ${rgba(colors.mainColor, 0.3)};
+  color: ${colors.lowdarkMainColor};
   padding: 6px 12px 6px 10px;
   font-size: 14px;
   font-weight: 700;
@@ -29,9 +29,13 @@ const CategoryItem = styled.div`
 `;
 
 const CategoryIcon = styled.img`
-  width: 18px; 
-  height: 18px;
+  width: 22px; 
+  height: 22px;
   margin-right: -3px;
+  ${media.mobile`
+    width: 18px; 
+    height: 18px;
+  `}
 `;
 
 const CategoryTag = ({ category }) => {

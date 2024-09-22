@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { DarkModeContext } from '../context/DarkModeContext';
 
-// 메뉴 아이콘 컨테이너 스타일
 const MenuIconContainer = styled.div`
   display: inline-block;
   position: relative;
@@ -10,13 +10,12 @@ const MenuIconContainer = styled.div`
   cursor: pointer;
 `;
 
-// 메뉴 아이콘 스팬 스타일
 const MenuIconSpan = styled.span`
   position: absolute;
   left: 50%;
   width: 100%;
   height: 4px;
-  background: #333;
+  background: ${({ theme }) => theme.color};
   border-radius: 4px;
   transform: translate(-50%, 0) rotate(0deg);
   transition: 0.2s ease-in-out;
@@ -35,8 +34,8 @@ const MenuIconSpan = styled.span`
     bottom: 0;
   }
 
-  ${({ active }) =>
-    active &&
+  ${({ $active }) =>
+    $active &&
     `
     &:nth-child(1) {
       top: 50%;
@@ -60,13 +59,17 @@ const MenuIconSpan = styled.span`
   `}
 `;
 
-const MenuIcon = ({ isActive }) => (
-  <MenuIconContainer>
-    <MenuIconSpan active={isActive} />
-    <MenuIconSpan active={isActive} />
-    <MenuIconSpan active={isActive} />
-    <MenuIconSpan active={isActive} />
-  </MenuIconContainer>
-);
+const MenuIcon = ({ isActive }) => {
+  const { darkMode } = useContext(DarkModeContext);
+  
+  return (
+    <MenuIconContainer>
+      <MenuIconSpan $active={isActive} />
+      <MenuIconSpan $active={isActive} />
+      <MenuIconSpan $active={isActive} />
+      <MenuIconSpan $active={isActive} />
+    </MenuIconContainer>
+  );
+};
 
 export default MenuIcon;

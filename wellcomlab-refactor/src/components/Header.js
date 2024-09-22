@@ -1,73 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
-import { colors, fonts, media } from '../assets/ui/styles';  
-import Logo from '../assets/icons/logo.png'; // 로고 이미지 가져오기
-import MenuIcon from './MenuIcon'; // MenuIcon 컴포넌트 가져오기
+import React, { useContext, useState, useRef, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { colors, fonts, media } from '../assets/ui/styles';
+import LogoLight from '../assets/icons/wcl_logo.svg';
+import LogoDark from '../assets/icons/wcl_logo_dark.svg';
+import MenuIcon from './MenuIcon';
+import { DarkModeContext } from '../context/DarkModeContext';
 
-// 헤더 스타일
 const StyledHeader = styled.header`
   width: 100vw;
   padding: 0 20px;
   box-sizing: border-box;
   font-family: ${fonts.header};
+  background-color: ${({ theme }) => theme.backgroundColor};
   display: flex;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 0px 12px rgba(0, 0, 0, 0.1);
 `;
 
-// 컨테이너 스타일
 const Container = styled.div`
   width: 100%;
   max-width: 1200px;
-  height: 60px; 
-  background-color: ${colors.white};
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-// 로고 이미지 스타일
 const LogoImage = styled.img`
-  height: 32px; // 높이 조정
-  margin-right: 10px;
+  height: 48px;
+  margin-right: 12px;
 `;
 
-// 타이틀 스타일
-const TitleWellness = styled.span`
-  font-weight: 800;
-  font-size: clamp(24px, 2vw, 36px);
-  color: ${colors.darkgray};
-`;
-
-const TitleComputing = styled.span`
-  margin-left: 4px;
-  letter-spacing: -1.2px;
-  font-weight: normal;
-  font-size: clamp(24px, 2vw, 36px);
-  color: ${colors.darkgray};
-`;
-
-// 링크 스타일
 const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
   margin: 0 15px;
-  color: ${colors.darkgray};
+  color: ${({ theme }) => theme.titleColor};
   cursor: pointer;
 
   &:hover, &:focus {
-    color: ${colors.cyan};
+    color: ${colors.mainColor};
   }
 
   &.active {
-    color: ${colors.cyan};
+    color: ${colors.mainColor};
   }
 `;
 
-// 네비게이션 링크 스타일
 const NavLinks = styled.div`
   display: flex;
 
@@ -76,28 +63,6 @@ const NavLinks = styled.div`
   `}
 `;
 
-// 모바일 아이콘 컨테이너 스타일
-const MobileIconContainer = styled.div`
-  display: none;
-
-  ${media.mobile`
-    display: block;
-  `}
-`;
-
-// 애니메이션 키프레임 정의
-const slideDown = keyframes`
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: auto;
-    opacity: 1;
-  }
-`;
-
-// 모바일 메뉴 스타일
 const MobileMenu = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,11 +75,9 @@ const MobileMenu = styled.div`
   box-sizing: border-box;
   text-align: center;
   z-index: 10;
-  animation: ${slideDown} 0.3s ease-out;
   overflow: hidden;
 `;
 
-// 모바일 메뉴 아이템 스타일
 const MobileMenuItem = styled(NavLink)`
   margin: 10px 0;
   color: ${colors.white};
@@ -124,18 +87,44 @@ const MobileMenuItem = styled(NavLink)`
   cursor: pointer;
 
   &:hover, &:focus {
-    color: ${colors.cyan};
+    color: ${colors.mainColor};
   }
 
   &.active {
-    color: ${colors.cyan};
+    color: ${colors.mainColor};
   }
 `;
 
-function Header({ isLoggedIn }) {
+const MobileMenuIcon = styled.div`
+  display: none;
+
+  ${media.mobile`
+    display: block;
+  `}
+`;
+
+const LogoutButton = styled.button`
+  margin-left: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.backgroundColor};
+  background-color: ${colors.gray700};
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+
+  &:hover, &:focus {
+    color: ${colors.mainColor};
+  }
+`;
+
+function Header({ isLoggedIn, setIsLoggedIn }) {
+  const { darkMode, setDarkMode } = useContext(DarkModeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const menuIconRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     setIsMobileMenuOpen(prevState => !prevState);
@@ -147,11 +136,20 @@ function Header({ isLoggedIn }) {
     }
   };
 
-  // 화면 크기 변경시 모바일 메뉴 닫기
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('darkMode');
+    setIsLoggedIn(false);
+    setDarkMode(false);
+    navigate('/');
+    window.location.reload()
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         setIsMobileMenuOpen(false);
+        console.log('Window resized, closing menu');
       }
     };
 
@@ -159,7 +157,6 @@ function Header({ isLoggedIn }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // 메뉴 바깥 클릭 시 메뉴 닫기
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -175,32 +172,26 @@ function Header({ isLoggedIn }) {
   return (
     <StyledHeader>
       <Container>
-        {/* 로고 및 타이틀 */}
         <StyledLink to="/">
-          <LogoImage src={Logo} alt="Logo" />
-          <TitleWellness>Wellness</TitleWellness>
-          <TitleComputing>Computing</TitleComputing>
+          <LogoImage src={darkMode ? LogoDark : LogoLight} alt="Logo" />
         </StyledLink>
 
-        {/* 데스크탑 네비게이션 링크 */}
         <NavLinks>
-          <StyledLink to="/about">About</StyledLink>
           <StyledLink to="/members">Members</StyledLink>
           <StyledLink to="/publications">Publications</StyledLink>
           <StyledLink to="/projects">Projects</StyledLink>
           <StyledLink to="/contact">Contact</StyledLink>
-          {isLoggedIn && <StyledLink to="/secret">Secret</StyledLink>}
+          {/* {isLoggedIn && <StyledLink to="/secret">Secret</StyledLink>} */}
         </NavLinks>
 
-        {/* 모바일 햄버거 아이콘 */}
-        <MobileIconContainer ref={menuIconRef} onClick={handleMenuToggle}>
-          <MenuIcon isActive={isMobileMenuOpen} />
-        </MobileIconContainer>
+        {isLoggedIn && <LogoutButton onClick={handleLogout}>Logout</LogoutButton>}
 
-        {/* 모바일 메뉴 */}
+        <MobileMenuIcon ref={menuIconRef} onClick={handleMenuToggle}>
+          <MenuIcon isActive={isMobileMenuOpen} />
+        </MobileMenuIcon>
+
         {isMobileMenuOpen && (
           <MobileMenu ref={menuRef}>
-            <MobileMenuItem to="/about" onClick={handleMenuToggle}>About</MobileMenuItem>
             <MobileMenuItem to="/members" onClick={handleMenuToggle}>Members</MobileMenuItem>
             <MobileMenuItem to="/publications" onClick={handleMenuToggle}>Publications</MobileMenuItem>
             <MobileMenuItem to="/projects" onClick={handleMenuToggle}>Projects</MobileMenuItem>
