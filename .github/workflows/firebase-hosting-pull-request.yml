@@ -13,14 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set working directory to wellcomlab-refactor
-        run: cd wellcomlab-refactor
+
       - name: Install dependencies
         run: npm install
+        working-directory: wellcomlab-refactor  # 여기서 작업 디렉토리 설정
+
       - name: Build project
         run: npm run build
+        working-directory: wellcomlab-refactor  # 여기서도 작업 디렉토리 설정
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WELLCOMLAB_70A36 }}
           projectId: wellcomlab-70a36
+        working-directory: wellcomlab-refactor  # 필요한 경우 추가
