@@ -5,34 +5,20 @@ permissions:
   contents: read
   pull-requests: write
 jobs:
-  build_and_deploy:
-    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+  build_and_preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # 현재 디렉토리 확인하기
-      - name: List files in root
-        run: ls -la
-
-      - name: List files in wellcomlab-refactor
-        run: ls -la wellcomlab-refactor
-
-      - name: Clear npm cache
-        run: npm cache clean --force
-
-      # working-directory를 wellcomlab-refactor로 설정하여 명령어 실행
+      - name: Set working directory to wellcomlab-refactor
+        run: cd wellcomlab-refactor
+      - run: ls # 현재 디렉토리의 파일을 확인
       - name: Install dependencies
         run: npm install
-        working-directory: wellcomlab-refactor
-
+      - run: ls # npm 설치 후 파일 확인
       - name: Build project
         run: npm run build
-        working-directory: wellcomlab-refactor
-
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WELLCOMLAB_70A36 }}
           projectId: wellcomlab-70a36
-        working-directory: wellcomlab-refactor
