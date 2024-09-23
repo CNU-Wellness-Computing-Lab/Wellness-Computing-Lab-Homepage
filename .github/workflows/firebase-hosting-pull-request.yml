@@ -18,6 +18,9 @@ jobs:
       - name: List files in wellcomlab-refactor
         run: ls -la wellcomlab-refactor
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+
       # working-directory를 wellcomlab-refactor로 설정하여 명령어 실행
       - name: Install dependencies
         run: npm install
