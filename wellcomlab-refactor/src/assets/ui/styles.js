@@ -25,7 +25,7 @@ export const colors = {
   
   export const fonts = {
     header: "Open Sans",
-    content: "Roboto"
+    content: "Roboto",
   };
   
   export const fontSize = {

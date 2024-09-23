@@ -45,16 +45,15 @@ const SlideText = styled.div`
   color: white;
   text-align: start;
   padding: 10px;
-  border-radius: 5px;
   font-size: 1.2em;
-  z-index: 2; 
+  z-index: 2;
 
   h2 {
     margin: 0;
     font-size: 1.5em;
     ${media.mobile`
-    font-size: 1.2em;
-  `}
+      font-size: 1em;
+    `}
   }
 
   p {
@@ -63,9 +62,16 @@ const SlideText = styled.div`
     font-size: 1em;
     color: ${colors.gray300};
     ${media.mobile`
-    font-size: 0.8em;
-  `}
+      font-size: 0.8em;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    `}
   }
+
+  ${media.mobile`
+    transform: translate(-50%, -50%); 
+    width: 80%; 
+  `}
 `;
 
 const CarouselComponent = ({ images }) => {

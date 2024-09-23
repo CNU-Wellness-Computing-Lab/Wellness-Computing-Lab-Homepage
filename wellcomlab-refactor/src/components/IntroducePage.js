@@ -42,6 +42,10 @@ const Title = styled.h1`
   font-weight: 800;
   margin-bottom: 0;
   color: ${colors.mainColor};
+  ${media.mobile`
+    font-size: 1.5em;
+    `
+    }
 `;
 
 const Content = styled.p`
@@ -49,10 +53,12 @@ const Content = styled.p`
   line-height: 1.5;
   font-size: 1.2em;
   ${media.mobile`
-    font-size: 1em;
+    font-size: 0.9em;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
     `
     }
-  font-weight: 200;
+  font-weight: 300;
   color: ${({ theme }) => theme.titleColor};;
   `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { colors } from '../assets/ui/styles';
+import { colors, media } from '../assets/ui/styles';
 import EditIcon from '../assets/icons/icon_settings.png';
 import DeleteIcon from '../assets/icons/icon_delete.png';
 
@@ -40,6 +40,10 @@ const NewsImage = styled.img`
   margin-bottom: 10px;
   border-radius: 12px;
   border: 1px solid ${colors.gray100};
+  ${media.gridSize`
+    height: 120px;
+    `
+    }
 `;
 
 const NewsInfo = styled.div`
@@ -53,6 +57,10 @@ const NewsTitle = styled.h3`
   margin: 8px 0px;
   font-weight: 500;
   font-size: medium;
+  ${media.gridSize`
+    font-size: 0.9em;
+    `
+    }
 `;
 
 const DateText = styled.p`
@@ -60,6 +68,10 @@ const DateText = styled.p`
   font-size: 1.2em;
   margin: 0px;
   font-weight: 800;
+  ${media.gridSize`
+    font-size: 1em;
+    `
+    }
 `;
 
 const Overlay = styled.div`

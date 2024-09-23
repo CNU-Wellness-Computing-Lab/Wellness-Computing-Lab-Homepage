@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   width: 100vw;
   padding: 0 20px;
   box-sizing: border-box;
-  font-family: ${fonts.header};
+  font-family: ${fonts.content};
   background-color: ${({ theme }) => theme.backgroundColor};
   display: flex;
   justify-content: center;

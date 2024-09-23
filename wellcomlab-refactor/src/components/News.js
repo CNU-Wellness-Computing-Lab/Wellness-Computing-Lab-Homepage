@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { colors, media } from '../assets/ui/styles';
+import { colors, fonts, media } from '../assets/ui/styles';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import NewsCard from './NewsCard';
@@ -15,7 +15,7 @@ const Container = styled.div`
   min-height: 100vh;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.background};
-  padding: 100px 20px 30px;
+  padding: 80px 20px 30px;
   max-width: 1000px;
   display: flex;
   flex-direction: column;
@@ -37,6 +37,10 @@ const Title = styled.h1`
   font-weight: 800;
   margin: 0px;
   color: ${colors.mainColor};
+  ${media.mobile`
+    font-size: 1.5em;
+    `
+    }
 `;
 
 const NewsGrid = styled.div`
@@ -63,6 +67,7 @@ const LabelButton = styled.p`
 
 const IconButton = styled.button`
   background: ${colors.white};
+  font-family: ${fonts.content};
   width: 160px;
   border-radius: 40px;
   padding: 8px 8px 8px 20px;
@@ -72,11 +77,16 @@ const IconButton = styled.button`
   border: 1.8px solid ${colors.mainColor};
   display: flex; 
   align-items: center; /* 세로 가운데 정렬 */
-  justify-content: space-between; /* 아이콘과 텍스트 간에 여백 추가 */
+  justify-content: space-between; 
   img {
     width: 28px;
     height: 28px;
   }
+  ${media.gridSize`
+    padding: 4px 4px 4px 20px;
+    width: 140px;
+    `
+    }
 `;
 
 function NewsPage({ isLoggedIn }) {
