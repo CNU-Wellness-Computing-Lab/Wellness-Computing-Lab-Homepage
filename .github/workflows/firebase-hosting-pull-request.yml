@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        working-directory: ./wellcomlab-refactor  # 이동할 디렉터리
+        working-directory: /home/runner/work/Wellness-Computing-Lab-Homepage/Wellness-Computing-Lab-Homepage/wellcomlab-refactor 
         run: npm install
       - name: Build project
-        working-directory: ./wellcomlab-refactor  # 빌드를 실행할 디렉터리
+        working-directory: /home/runner/work/Wellness-Computing-Lab-Homepage/Wellness-Computing-Lab-Homepage/wellcomlab-refactor 
         run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
