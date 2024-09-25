@@ -51,7 +51,7 @@ const IconLink = ({ href, src, alt, name }) => {
     <IconLinkContainer onClick={handleCopy}>
       <img src={src} alt={alt} />
       {name}
-      {/* <CopiedMessage visible={copied}>Copied!</CopiedMessage> */}
+      <CopiedMessage visible={copied}>Copied!</CopiedMessage>
     </IconLinkContainer>
   );
 };

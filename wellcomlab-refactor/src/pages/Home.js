@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { DarkModeContext } from '../context/DarkModeContext';
+import React from 'react';
 import styled from 'styled-components';
 import IntroducePage from '../components/IntroducePage';
 import NewsPage from '../components/News';
@@ -30,7 +29,6 @@ const PageSection = styled.div`
 `;
 
 function Home({ isLoggedIn }) {
-  // const { darkMode } = useContext(DarkModeContext);
 
   return (
     <PageContainer>

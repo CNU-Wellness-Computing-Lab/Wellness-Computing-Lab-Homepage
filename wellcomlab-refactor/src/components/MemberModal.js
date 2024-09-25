@@ -139,7 +139,7 @@ const MemberModal = ({ member, onSave, onClose }) => {
   const [email, setEmail] = useState(member ? member.email : '');
   const [github, setGithub] = useState(member ? member.github : '');
   const [linkedin, setLinkedin] = useState(member ? member.linkedin : '');
-  const [profileUrl, setProfileUrl] = useState(member ? member.profileUrl : '');
+  const [profileUrl ] = useState(member ? member.profileUrl : '');
   const [file, setFile] = useState(null);
 
   const handleSubmit = async (e) => {

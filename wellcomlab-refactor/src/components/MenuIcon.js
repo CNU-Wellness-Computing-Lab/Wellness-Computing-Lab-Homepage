@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { DarkModeContext } from '../context/DarkModeContext';
 
 const MenuIconContainer = styled.div`
   display: inline-block;
@@ -60,7 +59,6 @@ const MenuIconSpan = styled.span`
 `;
 
 const MenuIcon = ({ isActive }) => {
-  const { darkMode } = useContext(DarkModeContext);
   
   return (
     <MenuIconContainer>

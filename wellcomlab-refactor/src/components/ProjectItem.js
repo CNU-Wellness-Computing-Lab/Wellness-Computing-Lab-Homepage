@@ -141,13 +141,15 @@ const ProjectItem = ({ project, onEdit, onDelete, isLoggedIn }) => {
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    const currentContainerRef = containerRef.current; // 로컬 변수로 저장
+
+    if (currentContainerRef) {
+      observer.observe(currentContainerRef);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (currentContainerRef) {
+        observer.unobserve(currentContainerRef);
       }
     };
   }, []);

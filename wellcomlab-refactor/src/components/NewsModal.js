@@ -110,7 +110,7 @@ const NewsModal = ({ news, onSave, onClose }) => {
   const [title, setTitle] = useState(news ? news.title : '');
   const [date, setDate] = useState(news ? news.date.toDate().toISOString().split('T')[0] : ''); // Date 입력에 맞는 형식으로 변환
   const [content, setContent] = useState(news ? news.content : '');
-  const [imageUrl, setImageUrl] = useState(news ? news.imageUrl : '');
+  const [imageUrl] = useState(news ? news.imageUrl : '');
   const [file, setFile] = useState(null);
 
   const handleSubmit = async (e) => {

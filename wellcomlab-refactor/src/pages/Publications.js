@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../components/Firebase';
-import MenuBarHorizontal from '../components/MenuBarHorizontal';
 import PublicationList from '../components/PublicationList';
 import { colors } from '../assets/ui/styles';
 import PublicationModal from '../components/PublicationModal';
@@ -66,16 +65,11 @@ const AddIcon = styled.img`
 `;
 
 function Publications({ isLoggedIn }) {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory] = useState('All');
   const [allPublications, setAllPublications] = useState([]);
   const [publications, setPublications] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
-
-  const handleCategoryChange = (category) => {
-    setActiveCategory(category);
-    filterPublications(category);
-  };
 
   const handleAddPublication = () => {
     setSelectedPublication(null);
@@ -133,17 +127,12 @@ function Publications({ isLoggedIn }) {
 
   useEffect(() => {
     fetchPublications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Background>
       <Container>
-        {/* <MenuBarHorizontal
-          items={['All', 'Conference', 'Journal', 'Poster', 'Other']}
-          activeItem={activeCategory}
-          onItemClick={handleCategoryChange}
-        /> */}
-
         {isLoggedIn && (
           <AddButton onClick={handleAddPublication}>
             <AddIcon src={AddCloudIcon} alt="add icon" />

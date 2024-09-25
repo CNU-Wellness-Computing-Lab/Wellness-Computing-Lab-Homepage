@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { DarkModeContext } from '../context/DarkModeContext';
 
 const CancelButtonContainer = styled.div`
   display: inline-block;
@@ -30,8 +29,6 @@ const CancelButtonSpan = styled.span`
 `;
 
 const CancelButton = ({ onClick }) => {
-  const { darkMode } = useContext(DarkModeContext);
-
   return (
     <CancelButtonContainer onClick={onClick}>
       <CancelButtonSpan />

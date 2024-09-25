@@ -156,13 +156,16 @@ const MemberCard = ({ member, onEdit, onDelete, isLoggedIn }) => {
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    // cardRef.current 값을 안전하게 저장
+    const currentCardRef = cardRef.current;
+
+    if (currentCardRef) {
+      observer.observe(currentCardRef);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (currentCardRef) {
+        observer.unobserve(currentCardRef);
       }
     };
   }, []);
@@ -190,7 +193,7 @@ const MemberCard = ({ member, onEdit, onDelete, isLoggedIn }) => {
               </IconButton>
               <IconButton onClick={onDelete}>
                 <img src={DeleteIcon} alt="Delete" />
-                <LabelButton>Edit</LabelButton>
+                <LabelButton>Delete</LabelButton>
               </IconButton>
             </>
           ) : (

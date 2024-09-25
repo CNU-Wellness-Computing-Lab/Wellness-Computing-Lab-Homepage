@@ -43,7 +43,7 @@ const NewsImage = styled.img`
   ${media.gridSize`
     height: 120px;
     `
-    }
+  }
 `;
 
 const NewsInfo = styled.div`
@@ -60,7 +60,7 @@ const NewsTitle = styled.h3`
   ${media.gridSize`
     font-size: 0.9em;
     `
-    }
+  }
 `;
 
 const DateText = styled.p`
@@ -71,7 +71,7 @@ const DateText = styled.p`
   ${media.gridSize`
     font-size: 1em;
     `
-    }
+  }
 `;
 
 const Overlay = styled.div`
@@ -129,13 +129,15 @@ function NewsCard({ news, onEdit, onDelete, isLoggedIn }) {
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    const currentCardRef = cardRef.current; // 로컬 변수로 저장
+
+    if (currentCardRef) {
+      observer.observe(currentCardRef);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (currentCardRef) {
+        observer.unobserve(currentCardRef);
       }
     };
   }, []);
