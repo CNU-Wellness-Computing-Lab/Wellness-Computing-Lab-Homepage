@@ -137,7 +137,6 @@ function NewsPage({ isLoggedIn }) {
 
     fetchNews();
 
-    // 화면 크기 감지하여 모바일 여부 판단
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 663); 
     };
@@ -155,7 +154,7 @@ function NewsPage({ isLoggedIn }) {
     <Container>
       <HeaderContainer>
       <Title>Latest news</Title>
-        {!isMobile && ( /* 모바일일 경우 버튼 숨기기 */
+        {!isMobile && (
           <IconButton onClick={handleSeeMore}>
             <LabelButton>View More</LabelButton>
             <img src={viewMoreIcon} alt="ViewMoreButton" />
