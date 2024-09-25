@@ -36,7 +36,7 @@ const Item = styled.li`
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
   }
   &:hover .overlay {
-    display: flex; /* Hover 시 overlay 표시 */
+    display: flex;
   }
 ;`
 
@@ -48,6 +48,7 @@ const PaperTitle = styled.h2`
   color: ${colors.darkgray};
   margin: 8px 0px;
   letter-spacing: -1.2px;
+  font-weight: 600;
 
   ${media.mobile`
     font-size: 18px;
