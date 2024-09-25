@@ -6,16 +6,15 @@ permissions:
   pull-requests: write
 jobs:
   build_and_preview:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set working directory to wellcomlab-refactor
-        run: cd wellcomlab-refactor
-      - run: ls # 현재 디렉토리의 파일을 확인
       - name: Install dependencies
+        working-directory: ./wellcomlab-refactor  # 이동할 디렉터리
         run: npm install
-      - run: ls # npm 설치 후 파일 확인
       - name: Build project
+        working-directory: ./wellcomlab-refactor  # 빌드를 실행할 디렉터리
         run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
