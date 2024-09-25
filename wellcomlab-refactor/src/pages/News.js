@@ -114,9 +114,16 @@ function News({ isLoggedIn }) {
   };
 
   const handleDeleteNews = async (newsId) => {
-    await deleteDoc(doc(db, 'news', newsId));
-    setNews(news.filter((n) => n.id !== newsId));
-    alert('뉴스가 삭제되었습니다.');
+    const confirmDelete = window.confirm('정말 이 뉴스를 삭제하시겠습니까?');
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, 'news', newsId));
+        setNews(news.filter((n) => n.id !== newsId));
+        alert('뉴스가 삭제되었습니다.');
+      } catch (error) {
+        console.error('Error deleting news:', error);
+      }
+    } 
   };
 
   const handleSaveNews = async (newsItem) => {

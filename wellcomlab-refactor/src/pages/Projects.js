@@ -96,13 +96,16 @@ function Projects({ isLoggedIn }) {
   };
 
   const handleDeleteProject = async (projectId) => {
-    try {
+    const confirmDelete = window.confirm('정말 이 프로젝트를 삭제하시겠습니까?');
+    
+    if (confirmDelete) {
+      try {
       await deleteDoc(doc(db, 'projects', projectId));
       fetchProjects();
       alert('Project가 삭제되었습니다');
-    } catch (error) {
-      console.error("Error deleting project: ", error);
-      alert('Failed to delete project.');
+      } catch (error) {
+        console.error('Error deleting project:', error);
+      }
     }
   };
 

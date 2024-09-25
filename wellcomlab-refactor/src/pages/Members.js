@@ -140,9 +140,17 @@ function Members({ isLoggedIn }) {
 
   // 멤버 삭제
   const handleDeleteMember = async (memberId) => {
-    await deleteDoc(doc(db, 'members', memberId));
-    setMembers(members.filter((member) => member.id !== memberId));
-    alert('Member 삭제 완료');
+    const confirmDelete = window.confirm('정말 이 멤버를 삭제하시겠습니까?');
+    
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, 'members', memberId));
+        setMembers(members.filter((member) => member.id !== memberId));
+        alert('Member 삭제 완료');
+      } catch (error) {
+        console.error('Error deleting member:', error);
+      }
+    } 
   };
 
   // 멤버 저장

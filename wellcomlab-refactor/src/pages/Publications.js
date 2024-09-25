@@ -82,14 +82,17 @@ function Publications({ isLoggedIn }) {
   };
 
   const handleDeletePublication = async (publicationId) => {
-    try {
-      await deleteDoc(doc(db, 'publications', publicationId));
-      fetchPublications();
-      alert('Publication가 삭제되었습니다');
-    } catch (error) {
-      console.error("Error deleting publication: ", error);
-      alert('Failed to delete publication.');
-    }
+    const confirmDelete = window.confirm('정말 이 논문을 삭제하시겠습니까?');
+    
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, 'publications', publicationId));
+        fetchPublications();
+        alert('Publication가 삭제되었습니다');
+      } catch (error) {
+        console.error('Error deleting publication:', error);
+      }
+    } 
   };
 
   const handleSavePublication = () => {
