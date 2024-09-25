@@ -12,7 +12,6 @@ import viewMoreIcon from '../assets/icons/icon_view_more.png';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  overflow-y: auto;
   min-height: 100vh;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.background};
@@ -30,6 +29,11 @@ const Container = styled.div`
   }
   -ms-overflow-style: none;  
   scrollbar-width: none; 
+
+  ${media.mobile`
+    height: auto;
+    `
+    }
 `;
 
 const HeaderContainer = styled.div`
@@ -112,7 +116,6 @@ function NewsPage({ isLoggedIn }) {
         const q = query(
           collection(db, 'news'),
           orderBy('date', 'desc'),
-          limit(6)
         );
 
         const querySnapshot = await getDocs(q);
@@ -151,15 +154,17 @@ function NewsPage({ isLoggedIn }) {
   return (
     <Container>
       <HeaderContainer>
-        <Title>Latest news</Title>
-        <IconButton onClick={handleSeeMore}>
-          <LabelButton>View More</LabelButton>
-          <img src={viewMoreIcon} alt="ViewMoreButton" />
-        </IconButton>
+      <Title>Latest news</Title>
+        {!isMobile && ( /* 모바일일 경우 버튼 숨기기 */
+          <IconButton onClick={handleSeeMore}>
+            <LabelButton>View More</LabelButton>
+            <img src={viewMoreIcon} alt="ViewMoreButton" />
+          </IconButton>
+        )}
       </HeaderContainer>
       <NewsGrid>
         {news
-          .slice(0, isMobile ? 4 : news.length) 
+          .slice(0, isMobile ? news.length : 6) 
           .map((n, index) => (
             <NewsCard key={index} news={n} />
           ))}
