@@ -12,6 +12,7 @@ import viewMoreIcon from '../assets/icons/icon_view_more.png';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
+  overflow-y: auto;
   min-height: 100vh;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.background};
@@ -19,9 +20,16 @@ const Container = styled.div`
   max-width: 1000px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: start;
   margin: 0 auto;
+
+  /* 스크롤바 숨기기 */
+  &::-webkit-scrollbar {
+    display: none; 
+  }
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
 `;
 
 const HeaderContainer = styled.div`
