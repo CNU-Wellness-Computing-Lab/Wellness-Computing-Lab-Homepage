@@ -81,9 +81,9 @@ const MobileMenu = styled.div`
 `;
 
 const MobileMenuItem = styled(NavLink)`
-  margin: 40px 0;
+  margin: 30px 0;
   color: ${colors.white};
-  font-size: 1.5em;
+  font-size: clamp(1.5em, 3vw, 2em);
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;

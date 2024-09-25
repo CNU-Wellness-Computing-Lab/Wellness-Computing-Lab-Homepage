@@ -18,9 +18,9 @@ const List = styled.ul`
 ;`
 
 const Item = styled.li`
-  padding: 20px 30px;
+  padding: 24px 36px;
   margin-bottom: 10px;
-  border-radius: 30px;
+  border-radius: 24px;
   background-color: ${({ theme }) => theme.itemColor};
   position: relative;
   box-sizing: border-box;
@@ -28,6 +28,7 @@ const Item = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &.item-hover {
     transition: transform 0.3s ease-in-out;
   }
@@ -38,6 +39,11 @@ const Item = styled.li`
   &:hover .overlay {
     display: flex;
   }
+
+  ${media.mobile`
+    padding: 16px 24px;
+    border-radius: 16px;
+  `}
 ;`
 
 const PaperDetails = styled.div`
@@ -45,31 +51,26 @@ const PaperDetails = styled.div`
 ;`
 
 const PaperTitle = styled.h2`
+  font-size: clamp(1em, 5vw, 24px);
   color: ${colors.darkgray};
   margin: 8px 0px;
-  letter-spacing: -1.2px;
-  font-weight: 600;
-
-  ${media.mobile`
-    font-size: 18px;
-    letter-spacing: -0.6px;
-  `}
+  letter-spacing: -0.5px;
 ;`
 
 const AuthorsItem = styled.div`
+  font-size: clamp(0.8em, 3vw, 18px);
   font-style: italic;
   font-family: 'Roboto';
   color: ${colors.midgray};
   letter-spacing: -0.4px;
-  font-size: 14px;
 ;`
 
 const PublicationVenue = styled.div`
-  margin-top: 4px;
-  font-size: 14px;
+  font-size: clamp(0.9em, 3vw, 18px);
+  margin-top: 8px;
   font-weight: 800;
   letter-spacing: -0.4px;
-  color: ${colors.midgray};
+  color: ${colors.lowdarkMainColor};
 ;`
 
 const LabelButton = styled.p`

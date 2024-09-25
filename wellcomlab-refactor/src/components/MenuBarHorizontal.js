@@ -39,6 +39,7 @@ const StyledButton = styled.button.withConfig({
 
   ${media.mobile`
     margin: 5px 0;
+    font-size: 1em;
     padding: 10px 16px;
   `}
 `;

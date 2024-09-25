@@ -47,10 +47,11 @@ const Title = styled.h1`
   letter-spacing: -0.6px;
   font-weight: 800;
   margin: 0px 0px 32px 0px;
-  font-size: 2.8em;
+  font-size: 2.4em;
   color: ${colors.mainColor};
   ${media.mobile`
-    font-size: 1.8em;
+    width: 30vh;
+    font-size: 2em;
     letter-spacing: -0.8px;
     margin: 28px 0px 0px 0px;
     `

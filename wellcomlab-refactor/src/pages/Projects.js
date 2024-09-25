@@ -57,7 +57,7 @@ const AddIcon = styled.img`
 
 function Projects({ isLoggedIn }) {
   const [projects, setProjects] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('Current Projects');
+  const [activeCategory, setActiveCategory] = useState('Ongoing Projects');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -122,14 +122,14 @@ function Projects({ isLoggedIn }) {
   };
 
   const filteredProjects = projects.filter(project =>
-    activeCategory === 'Current Projects' ? project.status === 'ongoing' : project.status === 'completed'
+    activeCategory === 'Ongoing Projects' ? project.status === 'ongoing' : project.status === 'completed'
   );
 
   return (
     <Background>
       <Container>
         <MenuBarHorizontal
-          items={['Current Projects', 'Completed Projects']}
+          items={['Ongoing Projects', 'Completed Projects']}
           activeItem={activeCategory}
           onItemClick={handleCategoryChange}
         />

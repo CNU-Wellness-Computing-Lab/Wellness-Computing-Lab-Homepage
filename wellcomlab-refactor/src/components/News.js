@@ -50,9 +50,10 @@ const Title = styled.h1`
   letter-spacing: -0.4px;
   font-weight: 800;
   margin: 0px;
+  font-size: 2.4em;
   color: ${colors.mainColor};
   ${media.mobile`
-    font-size: 1.8em;
+    font-size: 2em;
     `
     }
 `;

@@ -6,7 +6,7 @@ import DeleteIcon from '../assets/icons/icon_delete.png';
 
 const ProjectContainer = styled.div`
   position: relative;
-  padding: 0px 20px 0px 20px;
+  padding: 10px 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,8 +14,7 @@ const ProjectContainer = styled.div`
   max-width: 1000px;
   background-color: ${({ theme }) => theme.itemColor};
   margin-bottom: 10px;
-  border-radius: 30px;
-  border-bottom: 1px solid ${colors.highlightgray};
+  border-radius: 12px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -27,8 +26,9 @@ const ProjectContainer = styled.div`
 
   ${media.mobile`
     flex-direction: column;
-    padding: 16px 5px;
-    width: 85vw;
+    padding: 0px 0px 16px 0px;
+    width: 80vw;
+    margin-bottom: 18px;
   `}
 
   &:hover {
@@ -36,7 +36,7 @@ const ProjectContainer = styled.div`
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   }
 
-  &:hover .overlay { /* 추가된 스타일 */
+  &:hover .overlay {
     display: flex;
   }
 `;
@@ -50,8 +50,9 @@ const Thumbnail = styled.img`
 
   ${media.mobile`
     width: 80vw;
-    height: 120px; /* 1:3 비율 */
-    margin-bottom: 14px ;
+    height: 120px;
+    margin-bottom: 14px;
+    border-radius: 12px 12px 0 0;
   `}
 `;
 
@@ -63,7 +64,7 @@ const ProjectContent = styled.div`
 `;
 
 const ProjectTitle = styled.h2`
-  font-size: clamp(18px, 5vw, 24px);
+  font-size: clamp(1em, 5vw, 24px);
   color: ${colors.darkgray};   
   width: fit-content;
   padding: 8px 16px;
@@ -71,18 +72,18 @@ const ProjectTitle = styled.h2`
   margin-left: 10px;
   margin-bottom: 10px;
   border-left: solid 6px ${colors.highlightgray};
-
-  ${media.mobile`
-    font-size: 18px;
-  `}
 `;
 
 const Description = styled.p`
-  font-size: clamp(12px, 3vw, 18px);
+  font-size: clamp(0.9em, 3vw, 18px);
   margin: 0px;
   text-indent: 20px;
   line-height: 24px;
-  padding: 0px 20px;
+  padding: 0px 12px 0px 12px;
+
+  ${media.mobile`
+    line-height: 1.4;
+  `}
 `;
 
 const Overlay = styled.div`

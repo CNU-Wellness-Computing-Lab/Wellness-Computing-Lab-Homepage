@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { colors } from '../assets/ui/styles';
+import { colors, media } from '../assets/ui/styles';
 import FieldTag from './FieldTag';
 import IconLink from './IconLink';
 
@@ -12,8 +12,8 @@ import DeleteIcon from '../assets/icons/icon_delete.png';
 
 const MemberCardContainer = styled.div`
   background-color: ${({ theme }) => theme.itemColor};
-  margin: 20px 0;
-  border-radius: 4px;
+  margin: 12px 0;
+  border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
   width: 220px;
   display: flex;
@@ -38,6 +38,10 @@ const MemberCardContainer = styled.div`
     transform: translateY(-5px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   }
+
+  ${media.mobile`
+    width: 320px;
+  `}
 `;
 
 const Overlay = styled.div`
@@ -90,8 +94,11 @@ const ProfileImage = styled.img`
   height: 140px;
   object-fit: cover;
   margin-bottom: 10px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 12px 12px 0 0;
+
+  ${media.mobile`
+    height: 180px;
+  `}
 `;
 
 const MemberInfo = styled.div`
@@ -106,7 +113,7 @@ const MemberName = styled.h2`
   margin: 0;
   width: 100%;
   color: ${colors.darkgray};
-  font-size: 20px;
+  font-size: 1.2em;
   text-align: center;
 `;
 
@@ -114,7 +121,7 @@ const MemberPosition = styled.p`
   margin: 5px 0 0 0;
   color: ${colors.midgray};
   text-align: center;
-  font-size: 14px;
+  font-size: clamp(0.9em, 3vw, 1em);
 `;
 
 const TagsContainer = styled.div`

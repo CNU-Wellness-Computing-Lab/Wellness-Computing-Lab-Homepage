@@ -6,7 +6,7 @@ import { db } from '../components/Firebase';
 import MemberCard from '../components/MemberCard';
 import MemberModal from '../components/MemberModal';
 import AddCloudIcon from '../assets/icons/icon_cloud_upload.png';
-import { colors } from '../assets/ui/styles';
+import { colors, media } from '../assets/ui/styles';
 
 const Container = styled.div`
   width: 100%;
@@ -35,6 +35,11 @@ const MemberGrid = styled.div`
   justify-items: center;
   width: 100%;
   grid-gap: 10px;
+
+  ${media.mobile`
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  `}
+  
 `;
 
 const SectionTitle = styled.h2`
