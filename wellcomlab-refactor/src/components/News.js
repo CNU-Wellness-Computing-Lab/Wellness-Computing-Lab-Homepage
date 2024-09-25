@@ -52,7 +52,7 @@ const Title = styled.h1`
   margin: 0px;
   color: ${colors.mainColor};
   ${media.mobile`
-    font-size: 1.5em;
+    font-size: 1.8em;
     `
     }
 `;

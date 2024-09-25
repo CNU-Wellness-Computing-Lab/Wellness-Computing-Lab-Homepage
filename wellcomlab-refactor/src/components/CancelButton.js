@@ -13,7 +13,7 @@ const CancelButtonSpan = styled.span`
   position: absolute;
   left: 50%;
   width: 100%;
-  height: 2px; /* 버튼의 두께를 조절 */
+  height: 2px; 
   background: ${({ theme }) => theme.backgroundColor};
   transform: translate(-50%, -50%);
 

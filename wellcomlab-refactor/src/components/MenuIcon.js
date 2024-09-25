@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors } from '../assets/ui/styles';
 
 const MenuIconContainer = styled.div`
   display: inline-block;
@@ -14,7 +15,7 @@ const MenuIconSpan = styled.span`
   left: 50%;
   width: 100%;
   height: 4px;
-  background: ${({ theme }) => theme.color};
+  background: ${({ $active, theme }) => ($active ? colors.mainColor : theme.color)};
   border-radius: 4px;
   transform: translate(-50%, 0) rotate(0deg);
   transition: 0.2s ease-in-out;

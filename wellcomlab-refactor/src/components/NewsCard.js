@@ -41,7 +41,7 @@ const NewsImage = styled.img`
   border-radius: 12px;
   border: 1px solid ${colors.gray100};
   ${media.gridSize`
-    height: 120px;
+    height: 140px;
     `
   }
 `;
@@ -63,7 +63,7 @@ const NewsTitle = styled.h3`
   font-size: medium;
   ${media.gridSize`
     font-size: 0.9em;
-    margin: 2px 0px;
+    margin: 4px 0px;
     `
   }
 `;

@@ -50,10 +50,7 @@ const SlideText = styled.div`
 
   h2 {
     margin: 0;
-    font-size: 1.8em;
-    ${media.mobile`
-      font-size: 2em;
-    `}
+    font-size: 1.7em;
   }
 
   p {

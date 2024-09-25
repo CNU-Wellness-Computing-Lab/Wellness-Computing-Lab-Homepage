@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
   padding: 0 20px;
   box-sizing: border-box;
   font-family: ${fonts.content};
-  background-color: ${({ theme }) => theme.backgroundColor};
+  background-color: ${({ isOpen, theme }) => (isOpen ? colors.gray900 : theme.backgroundColor)};
   display: flex;
   justify-content: center;
   position: fixed;
@@ -65,13 +65,15 @@ const NavLinks = styled.div`
 
 const MobileMenu = styled.div`
   display: flex;
+  height: 100vh;
   flex-direction: column;
+  justify-content: center;
   position: absolute;
   top: 60px;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 20px;
+  background-color: ${colors.gray900};
+  padding: 0px 0px 100px 0px;
   box-sizing: border-box;
   text-align: center;
   z-index: 10;
@@ -79,10 +81,10 @@ const MobileMenu = styled.div`
 `;
 
 const MobileMenuItem = styled(NavLink)`
-  margin: 10px 0;
+  margin: 40px 0;
   color: ${colors.white};
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 1.5em;
+  font-weight: 700;
   text-decoration: none;
   cursor: pointer;
 
@@ -149,7 +151,6 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         setIsMobileMenuOpen(false);
-        console.log('Window resized, closing menu');
       }
     };
 
@@ -170,10 +171,10 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
   }, [isMobileMenuOpen]);
 
   return (
-    <StyledHeader>
+    <StyledHeader isOpen={isMobileMenuOpen}>
       <Container>
         <StyledLink to="/">
-          <LogoImage src={darkMode ? LogoDark : LogoLight} alt="Logo" />
+        <LogoImage src={(isMobileMenuOpen || darkMode) ? LogoDark : LogoLight} alt="Logo" />
         </StyledLink>
 
         <NavLinks>

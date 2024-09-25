@@ -50,7 +50,8 @@ const Title = styled.h1`
   font-size: 2.8em;
   color: ${colors.mainColor};
   ${media.mobile`
-    font-size: 1.5em;
+    font-size: 1.8em;
+    letter-spacing: -0.8px;
     margin: 28px 0px 0px 0px;
     `
     }
