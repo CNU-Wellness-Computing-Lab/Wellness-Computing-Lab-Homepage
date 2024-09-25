@@ -3,7 +3,7 @@ import { colors, fonts, media } from '../assets/ui/styles';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import NewsCard from './NewsCard';
-import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { db } from '../components/Firebase';
 
