@@ -35,7 +35,7 @@ const NewsCardContainer = styled.div`
 
 const NewsImage = styled.img`
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
   margin-bottom: 10px;
   border-radius: 12px;

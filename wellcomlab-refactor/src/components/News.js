@@ -32,6 +32,8 @@ const Container = styled.div`
 
   ${media.mobile`
     height: auto;
+    width: 90%;
+    padding: 0px 30px;
     `
     }
 `;
@@ -138,7 +140,7 @@ function NewsPage({ isLoggedIn }) {
     fetchNews();
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 663); 
+      setIsMobile(window.innerWidth <= 768); 
     };
 
     // 초기화 및 리사이즈 이벤트 등록

@@ -41,7 +41,7 @@ const StyledLink = styled(NavLink)`
   align-items: center;
   text-decoration: none;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 1em;
   margin: 0 15px;
   color: ${({ theme }) => theme.titleColor};
   cursor: pointer;
