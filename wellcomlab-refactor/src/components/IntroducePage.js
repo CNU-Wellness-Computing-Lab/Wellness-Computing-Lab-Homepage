@@ -16,6 +16,11 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+
+  ${media.mobile`
+    height: auto;
+    `
+    }
 `;
 
 const CarouselContainer = styled.div`
