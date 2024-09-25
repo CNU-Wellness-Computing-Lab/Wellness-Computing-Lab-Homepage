@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm run build
+      - name: Install dependencies
+        working-directory: /home/runner/work/Wellness-Computing-Lab-Homepage/Wellness-Computing-Lab-Homepage/wellcomlab-refactor
+        run: npm install
+      - name: Build project
+        working-directory: /home/runner/work/Wellness-Computing-Lab-Homepage/Wellness-Computing-Lab-Homepage/wellcomlab-refactor
+        run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
