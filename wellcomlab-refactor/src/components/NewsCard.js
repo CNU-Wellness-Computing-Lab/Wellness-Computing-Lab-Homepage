@@ -51,6 +51,10 @@ const NewsInfo = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
+  ${media.gridSize`
+    padding: 0px 0px 10px 0px;
+    `
+  }
 `;
 
 const NewsTitle = styled.h3`
@@ -59,6 +63,7 @@ const NewsTitle = styled.h3`
   font-size: medium;
   ${media.gridSize`
     font-size: 0.9em;
+    margin: 2px 0px;
     `
   }
 `;

@@ -9,6 +9,7 @@ import Side3 from '../assets/images/wcl_image4.jpeg';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
+  overflow-y: hidden;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.background};
   display: flex;
