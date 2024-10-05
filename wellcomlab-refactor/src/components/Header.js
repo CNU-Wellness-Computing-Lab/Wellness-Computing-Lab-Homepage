@@ -2,8 +2,8 @@ import React, { useContext, useState, useRef, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors, fonts, media } from '../assets/ui/styles';
-import LogoLight from '../assets/icons/wcl_logo.svg';
-import LogoDark from '../assets/icons/wcl_logo_dark.svg';
+import LogoLight from '../assets/icons/wellcomlab_logo.png';
+import LogoDark from '../assets/icons/wellcomlab_logo_darkmode.png';
 import MenuIcon from './MenuIcon';
 import { DarkModeContext } from '../context/DarkModeContext';
 
