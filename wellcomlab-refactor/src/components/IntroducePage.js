@@ -80,6 +80,7 @@ function IntroducePage() {
         title: 'Chungnam National University Wellness Computing Lab.',
         description: 'Our core mission is to contribute to the betterment of well-being through HCI research!',
       },
+      position: '50% 40%', 
     },
     {
       src: Side2,
@@ -87,6 +88,7 @@ function IntroducePage() {
         title: 'Human-Computer Interaction',
         description: 'Centered around Human-Computer Interaction (HCI), our research explores the realms of UI/UX, persuasive computing.',
       },
+      position: 'center 70%'
     },
     {
       src: Side3,
@@ -94,6 +96,7 @@ function IntroducePage() {
         title: 'Digital Healthcare Research',
         description: 'With a focus on digital healthcare, we contribute to the advancement of human health and happiness.',
       },
+      position: '50% 20%'
     },
   ];
 

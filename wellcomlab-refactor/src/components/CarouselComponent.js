@@ -25,6 +25,7 @@ const CarouselContainer = styled.div`
 const CarouselImage = styled.img`
   height: 48vh;
   object-fit: cover;
+  object-position: ${({ position }) => position || 'center center'};
 `;
 
 const Overlay = styled.div`
@@ -77,7 +78,7 @@ const CarouselComponent = ({ images }) => {
       <Carousel showThumbs={false} showStatus={false} infiniteLoop useKeyboardArrows>
         {images.map((image, index) => (
           <div key={index}>
-            <CarouselImage src={image.src} alt={`Slide ${index + 1}`} />
+            <CarouselImage src={image.src} alt={`Slide ${index + 1}`} position={image.position} />
             <Overlay />
             {image.text && (
               <SlideText>
