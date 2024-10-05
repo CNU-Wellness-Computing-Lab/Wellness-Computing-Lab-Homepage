@@ -195,13 +195,13 @@ function Contact() {
           <QuestionBox ref={questionBoxRef}>
             <QuestionHeader>
               <img src={qIcon} alt="q" />
-              <h3>Where is parking lot?</h3>
+              <h3>Where is the parking lot?</h3>
             </QuestionHeader>
-            <p>It’s located between W1 and W2, closer to the library. If you pass W2 and head towards the library, you’ll find the parking lot.</p>
+            <p>It’s located between W2 and W3.</p>
           </QuestionBox>
 
           <Title>Email</Title>
-          <Text>Prof. JJ Kim : jjkim@cnu.ac.kr</Text>
+          <Text>Prof. Jaejeung Kim: jjkim@cnu.ac.kr</Text>
           <Text>Lab Mail: wellcomlab@gmail.com</Text>
         </Content>
         <MapImage src={cnuMap} alt="map_image" ref={mapRef} />
